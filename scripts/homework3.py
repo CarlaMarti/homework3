@@ -57,20 +57,20 @@ import pandas as pd
 
 #python scripts/homework3.py -id FilmGenreStats.csv -o Results -f -g Action -y 2002
 
-def main(input_data, output):
+def main(input_data, output, filtering, genre, year, name):
     """
     Deal with the input data and send to other functions, in this case inside the class filter_data.
     """
     print("WE WILL BE WORKING WITH THE FOLLOWING DATASET:", input_data)
     print("\n\n\n")
-
+    import pdb;pdb.set_trace()
     try:
         df = pd.read_csv(input_data, sep=',')
     except FileNotFoundError as e:
         raise FileNotFoundError(f"\n\n\n\n\n\n!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!CAUTION!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!\n\n\n\n\n\n FILE COULDN'T BE FOUND: {e}\n\n\n\n")
 
     print("HERE YOU HAVE A SAMPLE!\n\n\n",df.sample())
-    import pdb;pdb.set_trace()
+    
 
     if not os.path.exists(output):              #if the directory output is not found, we will generate one called as the user said
         os.makedirs(output)
