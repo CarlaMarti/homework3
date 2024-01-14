@@ -11,6 +11,8 @@
         
 # Every meaningful step we take should correspond with a commit
 
+# example: python scripts/homework3.py -id FilmGenreStats.csv
+
 """
 Script of practice 2 of making updates in GitHub
 """
@@ -20,7 +22,7 @@ class filter_data:
     Class to filter data by year and genre.
     """
 
-    def _init_(self, df):
+    def __init__(self, df):
         """
         Aceptar un DataFrame (df) como argumento y asignarlo al atributo df del objeto.
         """
@@ -51,13 +53,7 @@ import pandas as pd
 @click.option('-y', "--year", help="Set a year (you have to write it like this: 2002)")
 @click.option('-n', '--name', help = "Set a name to your result!")
 
-
-#python scripts/homework3.py -id FilmGenreStats.csv
-
-
-#python scripts/homework3.py -id FilmGenreStats.csv -o Results -f -g Action -y 2002
-
-def main(input_data, output):
+def main(input_data, output, filtering, genre, year, name):
     """
     Deal with the input data and send to other functions, in this case inside the class filter_data.
     """
@@ -70,10 +66,7 @@ def main(input_data, output):
         raise FileNotFoundError(f"\n\n\n\n\n\n!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!CAUTION!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!\n\n\n\n\n\n FILE COULDN'T BE FOUND: {e}\n\n\n\n")
 
     print("HERE YOU HAVE A SAMPLE!\n\n\n",df.sample())
-<<<<<<< Updated upstream
-    import pdb;pdb.set_trace()
-=======
-
+    
     if filtering:
         print("\n\n\nI AM FILTERING!\n\n\n")
         filter_obj = filter_data(df) 
@@ -84,14 +77,13 @@ def main(input_data, output):
         if genre:
             df = filter_obj.filter_by_genre(genre) 
     
->>>>>>> Stashed changes
-
     if not os.path.exists(output):#if the directory output is not found, we will generate one called as the user said
         os.makedirs(output)
     
     df.to_csv(f'{output}/{name}.csv', index=None)
     #we save the file where we want (output) or it will save it in "outputs"
 
+    print("DATA SAVED! SHAPE OF THE NEW DATASET:      ",df.shape,"\n\n\n")
 
 
 
