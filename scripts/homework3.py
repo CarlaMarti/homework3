@@ -70,9 +70,23 @@ def main(input_data, output):
         raise FileNotFoundError(f"\n\n\n\n\n\n!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!CAUTION!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!\n\n\n\n\n\n FILE COULDN'T BE FOUND: {e}\n\n\n\n")
 
     print("HERE YOU HAVE A SAMPLE!\n\n\n",df.sample())
+<<<<<<< Updated upstream
     import pdb;pdb.set_trace()
+=======
 
-    if not os.path.exists(output):              #if the directory output is not found, we will generate one called as the user said
+    if filtering:
+        print("\n\n\nI AM FILTERING!\n\n\n")
+        filter_obj = filter_data(df) 
+
+        if year:
+            df = filter_obj.filter_by_year(year)
+        
+        if genre:
+            df = filter_obj.filter_by_genre(genre) 
+    
+>>>>>>> Stashed changes
+
+    if not os.path.exists(output):#if the directory output is not found, we will generate one called as the user said
         os.makedirs(output)
     
     df.to_csv(f'{output}/{name}.csv', index=None)
