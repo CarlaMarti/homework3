@@ -63,11 +63,20 @@ def main(input_data, output, filtering, genre, year, name):
     """
     print("WE WILL BE WORKING WITH THE FOLLOWING DATASET:", input_data)
     print("\n\n\n")
-    import pdb;pdb.set_trace()
+
     try:
         df = pd.read_csv(input_data, sep=',')
     except FileNotFoundError as e:
         raise FileNotFoundError(f"\n\n\n\n\n\n!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!CAUTION!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!\n\n\n\n\n\n FILE COULDN'T BE FOUND: {e}\n\n\n\n")
+
+    #import pdb;pdb.set_trace()
+
+    #used this debugger to know the names of the columns of a given dataframe, these were: df.columns
+    # Index(['index', 'Genre', 'Year', 'Movies Released', 'Gross', 'Tickets Sold',
+    #    'Inflation-Adjusted Gross', 'Top Movie', 'Top Movie Gross (That Year)',
+    #    'Top Movie Inflation-Adjusted Gross (That Year)'],
+    #    dtype='object')
+
 
     print("HERE YOU HAVE A SAMPLE!\n\n\n",df.sample())
     
