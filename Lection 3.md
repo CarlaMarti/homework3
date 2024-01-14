@@ -228,3 +228,10 @@ or experiments.
         - Maybe some import pdb;pdb.set_trace()
         
         Every meaningful step we take should correspond with a commit
+
+
+# PRACTICES 
+
+## In class repository: https://github.com/CarlaMarti/Lection3 
+
+## Homework repository: https://github.com/CarlaMarti/homework3
