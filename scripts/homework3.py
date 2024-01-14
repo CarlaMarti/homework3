@@ -20,6 +20,24 @@ class filter_data:
     Class to filter data by year and genre.
     """
 
+    def _init_(self, df):
+        """
+        Aceptar un DataFrame (df) como argumento y asignarlo al atributo df del objeto.
+        """
+        self.df = df
+
+    def filter_by_genre(self, genre):
+        """
+        Filter the DataFrame based on a specified genre.
+        """
+        return self.df[self.df["Genre"] == genre]
+    
+    def filter_by_year(self, year):
+        """
+        Filter the Dataset by a given minimum year.
+        """
+        return self.df[self.df["Year"] > int(year)] 
+
 
 import os 
 import click
