@@ -47,18 +47,37 @@ import pandas as pd
 @click.option('-id','--input_data', required=True, help='Path to my input dataset')
 @click.option('-o','--output', default="outputs", help="Folder to save all outputs")
 @click.option('-f','--filtering', is_flag=True, help="Set a filtering or not")
-@click.option("-g", "--genre", help="Set a genre (you have to write the genre like this: Action)", required=True)
-@click.option("-y", "--year", help="Set a year (you have to write it like this: 2002)", required=True)
+@click.option('-g', "--genre", help="Set a genre (you have to write the genre like this: Action)")
+@click.option('-y', "--year", help="Set a year (you have to write it like this: 2002)")
+@click.option('-n', '--name', help = "Set a name to your result!")
+
 
 #python scripts/homework3.py -id FilmGenreStats.csv
 
 
 #python scripts/homework3.py -id FilmGenreStats.csv -o Results -f -g Action -y 2002
 
-def main():
+def main(input_data, output):
     """
     Deal with the input data and send to other functions, in this case inside the class filter_data.
     """
+    print("WE WILL BE WORKING WITH THE FOLLOWING DATASET:", input_data)
+    print("\n\n\n")
+
+    try:
+        df = pd.read_csv(input_data, sep=',')
+    except FileNotFoundError as e:
+        raise FileNotFoundError(f"\n\n\n\n\n\n!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!CAUTION!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!\n\n\n\n\n\n FILE COULDN'T BE FOUND: {e}\n\n\n\n")
+
+    print("HERE YOU HAVE A SAMPLE!\n\n\n",df.sample())
+    import pdb;pdb.set_trace()
+
+    if not os.path.exists(output):              #if the directory output is not found, we will generate one called as the user said
+        os.makedirs(output)
+    
+    df.to_csv(f'{output}/{name}.csv', index=None)
+    #we save the file where we want (output) or it will save it in "outputs"
+
 
 
 
